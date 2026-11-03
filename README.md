@@ -66,4 +66,3 @@ Future wholesale integration stages are described in [automation-roadmap.md](doc
 ## Phone repair directory
 
 Repairs now has iPhone, Samsung Galaxy and Google Pixel category pages and individual model pages. `src/repairCatalogue.mjs` is the single model directory for page links, search suggestions and direct GitHub Pages entries. Add a real model there once; the build creates its route automatically. Shared repair descriptions live in `src/repairTypes.ts`. Model pages prefill the brand/model in the existing enquiry flow. Directory entries are enquiries, not stock or repair-support guarantees. Unlisted devices remain available through the general enquiry.
-
