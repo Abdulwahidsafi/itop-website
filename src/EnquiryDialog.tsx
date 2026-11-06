@@ -8,7 +8,7 @@ import { AccessoriesEnquiryForm } from './AccessoriesEnquiryForm';
 import { BuySellEnquiryForm } from './BuySellEnquiryForm';
 
 export type EnquiryKind = 'Repair' | 'Accessories' | 'Trade' | 'Buy / sell' | 'Support';
-export type RepairPhone = { brand:string; model:string };
+export type RepairPhone = { brand:string; model:string; device?:string };
 export type Enquiry = { kind: EnquiryKind | 'Choose'; category: string; issue?: string; phone?: RepairPhone; quoteItems?: QuoteProduct[] };
 const choices: { kind: EnquiryKind; title: string; description: string }[] = [
   { kind: 'Repair', title: 'Repair a device', description: 'Phone, tablet, laptop or gadget faults.' },

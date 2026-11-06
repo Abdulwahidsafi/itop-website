@@ -3,15 +3,18 @@ import { RepairVisitChecklist } from './RepairVisitChecklist';
 import { PhoneBrandChoices } from './PhoneRepairPages';
 import { repairs } from './repairTypes';
 import { siteHref } from './sitePaths';
+import { RepairFinder } from './RepairFinder';
+import type { RepairPhone } from './EnquiryDialog';
 
 
 
-export function RepairsPage({ onEnquire }: { onEnquire: (issue?: string) => void }) {
+export function RepairsPage({ onEnquire }: { onEnquire: (issue?: string, phone?:RepairPhone) => void }) {
   return <>
     <section className="hero repairs-hero" aria-labelledby="repairs-title">
-      <div><p className="eyebrow">ITOP / REPAIRS / CATFORD</p><h1 id="repairs-title">Back to<br />working<span>.</span></h1></div>
+      <div><p className="eyebrow">ITOP / REPAIRS / CATFORD</p><h1 id="repairs-title">Your repair.<br />Made simple<span>.</span></h1></div>
       <div className="hero-copy"><p>Phone, laptop and gadget repair enquiries.<br className="desktop-break" /> Tell us the model and the fault.<br className="desktop-break" /> We’ll confirm the options before you visit.</p><button className="button button-dark" onClick={() => onEnquire()}>Start a repair enquiry</button><a className="repair-call" href="tel:+447760616466">Or call 07760 616 466</a></div>
     </section>
+    <RepairFinder onSelect={phone=>onEnquire(undefined,phone)} />
     <PhoneBrandChoices />
     <section className="repair-services" aria-labelledby="services-title">
       <div className="section-heading"><h2 id="services-title">What needs fixing?</h2><p>Choose a starting point. Parts and support depend on your model.</p></div>

@@ -9,8 +9,8 @@ const issues = ['Screen replacement', 'Battery replacement', 'Charging fault', '
 const hints: Record<string, string> = { 'Screen replacement': 'Cracked glass, lines, no image or touch problems', 'Battery replacement': 'Fast drain, shutdowns or charging problems', 'Charging fault': 'Loose cable, slow charging or charging only at an angle', 'Camera / speaker / microphone': 'What happens with the camera, sound or calls?', 'Water damage / diagnostics': 'What liquid was involved, and what does the device do now?', 'Not sure': 'What happens, and when did it start?' };
 
 export function RepairEnquiryFlow({ issue, phone }: { issue?: string; phone?: RepairPhone }) {
-  const [step, setStep] = useState(1);
-  const [data, setData] = useState<Record<string,string>>({ Device: 'Phone', Brand: phone?.brand ?? '', Model: phone?.model ?? '', UnknownModel: '', Issue: issue ?? 'Not sure', Symptoms: '', When: '', Name: '', Details: '' });
+  const [step, setStep] = useState(phone?.brand && phone?.model?.trim() ? 2 : 1);
+  const [data, setData] = useState<Record<string,string>>({ Device: phone?.device ?? 'Phone', Brand: phone?.brand ?? '', Model: phone?.model ?? '', UnknownModel: '', Issue: issue ?? 'Not sure', Symptoms: '', When: '', Name: '', Details: '' });
   const [faultAnswers,setFaultAnswers] = useState<Record<string,string>>({});
   const question = repairQuestions[data.Issue];
   const titleRef = useRef<HTMLHeadingElement>(null);
