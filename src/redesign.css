@@ -36,3 +36,24 @@
 /* Owner-approved prices; live booking remains separate from a displayed price. */
 .repair-price-options{margin-top:24px;border-top:1px solid #dbe5eb;padding-top:20px}.repair-price-options label{font-size:13px;margin-bottom:16px}.repair-price-options select{font-size:14px;border-radius:5px;padding:12px 9px}.repair-listed-price{display:flex;align-items:baseline;gap:10px!important;font-size:36px!important;font-weight:750!important;letter-spacing:-.04em;line-height:1.25!important;color:#103b4b!important;margin:14px 0 18px!important}.repair-listed-price span{font-size:12px;font-weight:400;letter-spacing:0;color:#60717b}.repair-part-label{font-size:13px;color:#526b78}.repair-price-options .button{font-size:13px;padding:13px 16px;min-height:46px;width:100%}.repair-part-help{font-size:12px!important;line-height:1.5!important;margin-top:12px!important;color:#627580!important}.repair-price-options select:focus-visible{outline-offset:2px}
 .repair-deposit-breakdown{margin:0 0 20px;font-size:12px;color:#526b78}.repair-deposit-breakdown>div{display:flex;justify-content:space-between;gap:16px;margin-top:9px}.repair-deposit-breakdown dd{margin:0;font-weight:650;color:#103b4b}
+
+/* Exact model imagery in the picker, directory and repair page. */
+.model-photo{display:flex;align-items:center;justify-content:center;width:100%;background:#fff;overflow:hidden;border-radius:12px;aspect-ratio:9/7}
+.model-photo img{display:block;width:100%;height:100%;object-fit:contain;padding:14px;mix-blend-mode:multiply}
+.model-photo-unavailable{padding:24px;color:#666;font-size:13px;text-align:center}
+.phone-model-grid .phone-model{display:grid;grid-template-columns:1fr 20px;gap:14px;padding:18px;align-items:center;background:#fff}
+.phone-model-grid .phone-model .model-photo{grid-column:1/-1;height:150px;aspect-ratio:auto;background:#fff}
+.phone-model-grid .phone-model .model-photo img{padding:4px}
+.phone-model-name{font-weight:650}
+.model-hero-photo{margin:0;min-width:0;width:100%;max-width:400px;justify-self:center}
+.model-hero-photo .model-photo{height:290px;aspect-ratio:auto}
+.model-photo-credit{display:block;font-size:11px;line-height:1.6;color:#687278;margin-top:10px;font-weight:400}
+.model-photo-credit a{text-decoration:underline;text-underline-offset:3px}
+.model-page-hero.has-model-photo{grid-template-columns:1.1fr 1fr .95fr;gap:32px;align-items:center}
+.model-page-hero.has-model-photo h1{font-size:clamp(40px,4.5vw,68px)}
+.finder-model-preview{display:flex;gap:28px;align-items:center;max-width:600px;margin:24px 0 0;padding:20px;background:#fff;border:1px solid #dae0e2;border-radius:16px}
+.finder-model-preview>.model-photo{width:170px;height:145px;flex-shrink:0;aspect-ratio:auto}
+.finder-model-preview h3{font-size:24px;line-height:1.2;margin:8px 0}
+.finder-model-preview p{font-size:14px;color:#5d686c;margin:0}
+@media(max-width:1000px){.model-page-hero.has-model-photo{grid-template-columns:1fr 1fr}.has-model-photo .hero-copy{grid-column:1/-1;max-width:650px}.model-hero-photo .model-photo{height:260px}}
+@media(max-width:600px){.model-page-hero.has-model-photo{grid-template-columns:1fr;gap:24px}.model-page-hero.has-model-photo h1{font-size:46px}.model-hero-photo{max-width:340px}.model-hero-photo .model-photo{height:250px}.finder-model-preview{gap:14px;padding:14px}.finder-model-preview>.model-photo{width:110px;height:135px}.finder-model-preview h3{font-size:21px}.phone-model-grid .phone-model{padding:12px;gap:10px}.phone-model-grid .phone-model .model-photo{height:130px}}
