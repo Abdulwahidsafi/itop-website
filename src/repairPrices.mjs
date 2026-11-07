@@ -1,3 +1,6 @@
+import { benchmarkRepairPrices } from './benchmarkRepairPrices.mjs';
+import { repairBrands } from './repairCatalogue.mjs';
+
 // Owner-supplied repair prices, 6 November 2026. Amounts are integer pence.
 // Missing prices must remain unavailable; never borrow another model's price.
 export const repairPriceRows = [
@@ -25,19 +28,36 @@ export const repairPriceRows = [
   ['iPhone 17 Pro Max',99,80,130],
 ].map(([model,screen,battery,softOled])=>({model,screenPence:screen*100,batteryPence:battery*100,softOledPence:softOled===undefined ? null : softOled*100}));
 
+// Back glass follows the owner's generation bands; iPhone 18 remains quote-only.
+export const backGlassPrices = repairBrands.find(brand=>brand.id==='iphone').models.flatMap(({name})=>{
+  const generation=Number(name.match(/^iPhone (1[1-7])(?: |e|$)/)?.[1]);
+  const amount=generation>=11&&generation<=14 ? 6000 : generation===15||generation===16 ? 7500 : generation===17||name==='iPhone Air' ? 8500 : null;
+  return amount===null ? [] : [{model:name,pricePence:amount}];
+});
+
 export function repairPriceOptions(model,issue) {
+  if(issue==='Back glass replacement'){
+    const back=backGlassPrices.find(row=>row.model===model);
+    if(back)return [{id:'back-glass',label:'Back glass replacement',pricePence:back.pricePence,note:''}];
+  }
+  const benchmark=benchmarkRepairPrices.filter(row=>row.model===model&&row.issue===issue).map(({id,label,pricePence,note})=>({id,label,pricePence,note}));
+  if(benchmark.length)return benchmark;
+
   const row=repairPriceRows.find(row=>row.model===model);
   if(!row) return [];
   if(issue==='Screen replacement') return [
-    {id:'screen-standard',label:'Standard screen',pricePence:row.screenPence},
-    ...(row.softOledPence===null ? [] : [{id:'screen-soft-oled',label:'Soft OLED',pricePence:row.softOledPence}]),
+    {id:'screen-standard',label:'Standard screen',pricePence:row.screenPence,note:''},
+    ...(row.softOledPence===null ? [] : [{id:'screen-soft-oled',label:'Soft OLED',pricePence:row.softOledPence,note:''}]),
   ];
   if(issue==='Battery replacement') return [
-    {id:'battery-standard',label:'Standard battery',pricePence:row.batteryPence},
-    {id:'battery-upgraded',label:'Premium battery',pricePence:row.batteryPence+1000},
+    {id:'battery-standard',label:'Standard battery',pricePence:row.batteryPence,note:''},
+    {id:'battery-upgraded',label:'Premium battery',pricePence:row.batteryPence+1000,note:''},
   ];
   return [];
 }
+
+/** @param {string} model */
+export function hasRepairPrices(model) { return backGlassPrices.some(row=>row.model===model)||repairPriceRows.some(row=>row.model===model)||benchmarkRepairPrices.some(row=>row.model===model); }
 
 export function repairMoney(pence) {
   if(!Number.isSafeInteger(pence)||pence<=0) throw new Error('Invalid repair price');

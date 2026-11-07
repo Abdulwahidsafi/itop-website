@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { PhoneModelPhoto, ModelPhotoCredit } from './PhoneModelPhoto';
 import { RepairPriceOptions } from './RepairPriceOptions';
-import { repairPriceOptions } from './repairPrices.mjs';
+import { repairPriceOptions, hasRepairPrices } from './repairPrices.mjs';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import { repairBrands, findRepairPage } from './repairCatalogue.mjs';
 import { RepairVisitChecklist } from './RepairVisitChecklist';
-import { repairs } from './repairTypes';
+import { modelRepairServices } from './repairTypes';
 import { siteHref } from './sitePaths';
 import type { RepairPhone } from './EnquiryDialog';
 
@@ -25,10 +25,10 @@ function ModelList({ brandId, onOther }: { brandId:string; onOther:()=>void }) {
 export function PhoneRepairPages({route,onEnquire}:{route:string;onEnquire:(issue?:string,phone?:RepairPhone)=>void}) {
   const {brand,model,valid}=findRepairPage(route);
   if (!valid || !brand) return <section className="repair-directory"><h1>Find your repair.</h1><p className="directory-note">This model page is not in our directory.</p><a className="button button-dark" href={siteHref('repairs/')}>Browse repairs</a></section>;
-  const hasPrices=!!model && repairPriceOptions(model.name,'Screen replacement').length>0;
+  const hasPrices=!!model && hasRepairPrices(model.name);
   const phone=model ? {brand:brand.name,model:model.name} : {brand:brand.name,model:''};
   return <><nav className="repair-breadcrumb" aria-label="Breadcrumb"><a href={siteHref('repairs/')}>Repairs</a><span aria-hidden="true">/</span>{model ? <><a href={siteHref('repairs/'+brand.id+'/')}>{brand.label}</a><span aria-hidden="true">/</span><span aria-current="page">{model.name}</span></> : <span aria-current="page">{brand.label}</span>}</nav>
     <section className={"hero repairs-hero model-page-hero" + (model ? " has-model-photo" : "")}><div><p className="eyebrow">ITOP / PHONE REPAIRS / CATFORD</p><h1>{model ? model.name : brand.label}<br />repairs<span>.</span></h1></div>{model && <figure className="model-hero-photo"><PhoneModelPhoto brand={brand.name} model={model.name} priority/><figcaption><ModelPhotoCredit brand={brand.name} model={model.name}/></figcaption></figure>}<div className="hero-copy"><p>{model ? (hasPrices ? 'Choose your repair and part option to see the price. Call the shop to arrange your repair while online appointments are being set up.' : 'Message us for a price for your exact device. Your model will be included in the enquiry.') : 'Choose your exact model to prepare a repair enquiry. You can also ask about a model that is not listed.'}</p>{hasPrices ? <a className="button button-dark" href="#model-services-title">See repair prices</a> : <button className="button button-dark" onClick={()=>onEnquire(undefined,phone)}>{model ? 'Message for a price' : 'Not sure of the model?'}</button>}</div></section>
-    {model ? <><section className="repair-services" aria-labelledby="model-services-title"><div className="section-heading"><h2 id="model-services-title">What needs fixing?</h2><p>Repair options for your {model.name} enquiry.</p></div><div className="repair-service-grid">{repairs.map(({title,issue,description,icon:Icon})=><article className="repair-service" key={issue}><Icon size={30} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p>{repairPriceOptions(model.name,issue).length ? <RepairPriceOptions model={model.name} issue={issue}/> : <button className="text-button" onClick={()=>onEnquire(issue,phone)}>Ask about {issue === 'Not sure' ? 'a fault' : 'this repair'}<ArrowUpRight size={18} aria-hidden="true" /></button>}</article>)}</div></section><RepairVisitChecklist /></> : <ModelList brandId={brand.id} onOther={()=>onEnquire(undefined,phone)} />}
+    {model ? <><section className="repair-services" aria-labelledby="model-services-title"><div className="section-heading"><h2 id="model-services-title">What needs fixing?</h2><p>Repair options for your {model.name} enquiry.</p></div><div className="repair-service-grid">{modelRepairServices(model.name).map(({title,issue,description,icon:Icon})=><article className="repair-service" key={issue}><Icon size={30} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p>{repairPriceOptions(model.name,issue).length ? <RepairPriceOptions model={model.name} issue={issue}/> : <button className="text-button" onClick={()=>onEnquire(issue,phone)}>Ask about {issue === 'Not sure' ? 'a fault' : 'this repair'}<ArrowUpRight size={18} aria-hidden="true" /></button>}</article>)}</div></section><RepairVisitChecklist /></> : <ModelList brandId={brand.id} onOther={()=>onEnquire(undefined,phone)} />}
   </>;
 }

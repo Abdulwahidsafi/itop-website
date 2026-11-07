@@ -39,7 +39,7 @@ test('deposits respect strict boundaries and balance reconciles to total',()=>{
   assert.equal(appointmentSettings.slotMinutes,60);assert.equal(appointmentSettings.capacity,3);assert.deepEqual(appointmentSettings.opening.sunday,['10:30','16:30']);assert.equal(appointmentSettings.onlineBookingEnabled,false);
 });
 test('unknown models, iPhone 18 and unpriced repairs never get a fallback price',()=>{
-  for(const model of ['iPhone 18 Pro','iPhone 18 Pro Max','iPhone 13 mini','iPhone 15 Plus','iPhone 17e','Galaxy S24']) for(const issue of ['Screen replacement','Battery replacement']) assert.deepEqual(repairPriceOptions(model,issue),[]);
+  for(const model of ['iPhone 18 Pro','iPhone 18 Pro Max','iPhone 13 mini','iPhone 15 Plus','iPhone 17e']) for(const issue of ['Screen replacement','Battery replacement']) assert.deepEqual(repairPriceOptions(model,issue),[]);
   assert.deepEqual(repairPriceOptions('iPhone 15','Charging fault'),[]);
   assert.deepEqual(repairPriceOptions('iPhone 1','Screen replacement'),[]);
   assert.equal(repairMoney(9900),'£99');assert.throws(()=>repairMoney(0));assert.throws(()=>repairMoney(99.5));

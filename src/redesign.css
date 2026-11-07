@@ -57,3 +57,5 @@
 .finder-model-preview p{font-size:14px;color:#5d686c;margin:0}
 @media(max-width:1000px){.model-page-hero.has-model-photo{grid-template-columns:1fr 1fr}.has-model-photo .hero-copy{grid-column:1/-1;max-width:650px}.model-hero-photo .model-photo{height:260px}}
 @media(max-width:600px){.model-page-hero.has-model-photo{grid-template-columns:1fr;gap:24px}.model-page-hero.has-model-photo h1{font-size:46px}.model-hero-photo{max-width:340px}.model-hero-photo .model-photo{height:250px}.finder-model-preview{gap:14px;padding:14px}.finder-model-preview>.model-photo{width:110px;height:135px}.finder-model-preview h3{font-size:21px}.phone-model-grid .phone-model{padding:12px;gap:10px}.phone-model-grid .phone-model .model-photo{height:130px}}
+
+.repair-price-scope{font-size:13px;line-height:1.5;padding:12px;background:#edf5f7;border-left:3px solid #19aac9;color:#263b44}.finder-price-results{margin-top:32px;scroll-margin-top:110px}.finder-price-results>h3{font-size:30px;letter-spacing:-1px}.finder-price-results .repair-service-grid{margin-top:20px}

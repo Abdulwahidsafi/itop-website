@@ -5,7 +5,7 @@ import type { RepairPhone } from './EnquiryDialog';
 import { MessageReview } from './MessageReview';
 import { repairMessage } from './enquiryMessages.mjs';
 
-const issues = ['Screen replacement', 'Battery replacement', 'Charging fault', 'Camera / speaker / microphone', 'Water damage / diagnostics', 'Not sure'];
+const issues = ['Screen replacement', 'Battery replacement', 'Back glass replacement', 'Frame replacement', 'Logic board replacement', 'Button replacement', 'Charging fault', 'Camera / speaker / microphone', 'Water damage / diagnostics', 'Not sure'];
 const hints: Record<string, string> = { 'Screen replacement': 'Cracked glass, lines, no image or touch problems', 'Battery replacement': 'Fast drain, shutdowns or charging problems', 'Charging fault': 'Loose cable, slow charging or charging only at an angle', 'Camera / speaker / microphone': 'What happens with the camera, sound or calls?', 'Water damage / diagnostics': 'What liquid was involved, and what does the device do now?', 'Not sure': 'What happens, and when did it start?' };
 
 export function RepairEnquiryFlow({ issue, phone }: { issue?: string; phone?: RepairPhone }) {

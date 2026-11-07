@@ -12,6 +12,7 @@ export function RepairPriceOptions({model,issue}:{model:string;issue:string}) {
     <p className="repair-listed-price" aria-live="polite">{repairMoney(option.pricePence)}<span>repair price</span></p>
     <dl className="repair-deposit-breakdown" aria-live="polite"><div><dt>Booking deposit</dt><dd>{repairMoney(payment.depositPence)}</dd></div><div><dt>Balance after deposit</dt><dd>{repairMoney(payment.balancePence)}</dd></div></dl>
     <a className="button button-dark" href="tel:+447760616466">Call to arrange this repair</a>
+    {option.note && <p className="repair-price-scope">{option.note}</p>}
     <p className="repair-part-help">Online bookings and deposit payments are not available yet. Ask the team about the part options.</p>
   </div>;
 }
