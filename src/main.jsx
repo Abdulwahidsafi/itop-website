@@ -8,6 +8,7 @@ import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import "./styles.css";
 import "./redesign.css";
+import "./theme-2026.css";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
