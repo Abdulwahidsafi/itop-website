@@ -25,3 +25,22 @@ export function sitePageMeta(route) {
   if (!meta) return {title:'Page not found | iTop Catford', description:'This page is unavailable. Browse iTop services or contact the shop for help.', indexable:false, canonical:null};
   return {...meta, indexable:true, canonical:siteUrl + (clean ? clean + '/' : '')};
 }
+
+// Business details for Google (schema.org). Only facts already shown on the site.
+// Opening hours are left out until the owner confirms one set of hours; add them
+// here as openingHoursSpecification, matching the Contact page and the Google profile.
+export const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'MobilePhoneStore',
+  '@id': siteUrl + '#shop',
+  name: 'iTop Phones & Repair Center',
+  url: siteUrl,
+  telephone: '+447760616466',
+  image: siteUrl + 'assets/itop-logo.png',
+  address: { '@type': 'PostalAddress', streetAddress: '160 Rushey Green', addressLocality: 'London', postalCode: 'SE6 4HQ', addressCountry: 'GB' },
+};
+export const localBusinessRoutes = ['', 'contact/'];
+export function localBusinessScript(route) {
+  if (!localBusinessRoutes.includes(route)) return '';
+  return '<script type="application/ld+json">' + JSON.stringify(localBusiness).replaceAll('<', '\\u003c') + '</script>';
+}

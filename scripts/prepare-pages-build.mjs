@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { publishedRoutes, sitePageMeta, siteUrl } from '../src/siteMeta.mjs';
+import { publishedRoutes, sitePageMeta, siteUrl, localBusinessScript } from '../src/siteMeta.mjs';
 
 const output = new URL('../dist/client/', import.meta.url);
 const html = await readFile(new URL('index.html', output), 'utf8');
@@ -17,6 +17,7 @@ function pageHtml(route) {
     `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`,
   ];
+  const business=localBusinessScript(route); if(business) tags.push(business);
   if(meta.canonical) tags.push(`<link rel="canonical" href="${meta.canonical}" />`, `<meta property="og:url" content="${meta.canonical}" />`);
   return html.replace(/<title>[^<]*<\/title>/, '<title>'+escapeHtml(meta.title)+'</title>')
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, '$1'+escapeHtml(meta.description)+'$2')

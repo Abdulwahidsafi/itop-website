@@ -9,7 +9,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* Top strip and header */
 .utility-bar{background:var(--night)}
-.header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
+.header{position:sticky;top:0;z-index:40;background:#fff;-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
 .navigation a{position:relative}
 .navigation a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:var(--electric);transform:scaleX(0);transform-origin:left;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .navigation a:hover{color:var(--electric-deep)}.navigation a:hover::after,.navigation a[aria-current]::after{transform:scaleX(1)}
@@ -89,3 +89,12 @@ footer{border-top:1px solid var(--line)}
 .text-button,.enquiry-choices button:hover,.repair-service>svg,.faq-list summary::marker,.service-path:hover,.service-path:focus-visible,.path-number,.flow-steps li[aria-current="step"],.home-service-selector .service-path:hover,.home-service-selector .service-path:focus-visible,.service-path-top,.home-accessories .product-copy h3 a:hover,.home-accessories .product-copy h3 span,.phone-brand:hover,.phone-model:hover,.brand-link,.phone-model svg,.business-card-top,.business-choice:hover,.accessory-shortcuts a:hover,.accessory-item-choices button,.device-model-help summary,.business-shortcuts button,.business-shortcuts button:hover,.home-brand-card p,.visit-location-card>svg,.home-business>a{color:#1b2a7a}
 .accessory-shortcuts a:hover{border-color:#0b1445}.enquiry-dialog .checkbox-label input{accent-color:#0b1445}
 .hero .text-button,.repair-home-hero .text-button{color:#fff}
+
+/* Always-visible contact buttons */
+.quick-contact{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.quick-contact a{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border-radius:999px;font-size:15px;font-weight:700;box-shadow:0 12px 28px rgba(11,20,69,.28);transition:transform .18s cubic-bezier(.2,.7,.2,1)}
+.quick-contact a:hover{transform:translate3d(0,-2px,0)}.quick-contact a:active{transform:scale(.96)}
+.quick-contact-whatsapp{background:#0b7a43;color:#fff}
+.quick-contact-call{background:var(--yellow);color:#0b1445;display:none!important}
+@media(max-width:720px){.quick-contact-call{display:inline-flex!important}.quick-contact-above-bar{bottom:calc(92px + env(safe-area-inset-bottom))}footer{padding-bottom:150px}}
+@media(prefers-reduced-motion:reduce){.quick-contact a:hover,.quick-contact a:active{transform:none}}

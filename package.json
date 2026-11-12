@@ -7,11 +7,11 @@
     "dev": "vite",
     "build": "node scripts/check-retail-products.mjs && vite build && node scripts/prepare-sites-build.mjs",
     "build:pages": "node scripts/check-retail-products.mjs && vite build --base / && node scripts/prepare-pages-build.mjs",
-    "test:retail": "node --test tests/retail-products.test.mjs tests/analytics.test.mjs",
+    "test:retail": "node --test tests/retail-products.test.mjs tests/analytics.test.mjs tests/local-business.test.mjs",
     "test:pages": "node --test tests/pages-build.test.mjs tests/site-meta.test.mjs",
     "preview": "vite preview",
     "test:sites": "node --test tests/sites-worker.test.mjs",
-    "test:enquiries": "node --test tests/benchmark-repairs.test.mjs tests/model-photos.test.mjs tests/repair-prices.test.mjs tests/enquiry-messages.test.mjs tests/wholesale-draft.test.mjs tests/repair-catalogue.test.mjs tests/wholesale-browsing.test.mjs tests/wholesale-photos.test.mjs tests/buy-sell-message.test.mjs tests/iphone-quotes.test.mjs tests/iphone-sheet.test.mjs tests/retail-products.test.mjs tests/analytics.test.mjs"
+    "test:enquiries": "node --test tests/benchmark-repairs.test.mjs tests/model-photos.test.mjs tests/repair-prices.test.mjs tests/enquiry-messages.test.mjs tests/wholesale-draft.test.mjs tests/repair-catalogue.test.mjs tests/wholesale-browsing.test.mjs tests/wholesale-photos.test.mjs tests/buy-sell-message.test.mjs tests/iphone-quotes.test.mjs tests/iphone-sheet.test.mjs tests/retail-products.test.mjs tests/analytics.test.mjs tests/local-business.test.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
