@@ -4,6 +4,7 @@ import { findRepairPage, repairPageMeta, repairPageRoutes } from './repairCatalo
 export const siteUrl = 'https://itopgroup.co.uk/';
 const descriptions = {
   privacy: ['Privacy & Cookies | iTop Catford', 'How iTop website enquiries, saved quote lists and optional analytics cookies work. Manage your visitor analytics choice and contact iTop about privacy.'],
+  'track-repair': ['Track Your Repair | iTop Catford', 'Check how your repair is going at iTop in Catford. Type the job number from your ticket and the last 4 digits of your phone number.'],
   '': ['iTop Phones & Repair Center | Catford', 'Phone, laptop and gadget repair enquiries, accessories, buy and sell, and wholesale supply at iTop, 160 Rushey Green, Catford, London SE6 4HQ.'],
   repairs: ['Device Repair Enquiries | iTop Catford', 'Choose your phone model or describe a tablet, laptop or gadget fault. Ask iTop in Catford to confirm repair options, parts, price and timing.'],
   accessories: ['Phone & Gadget Accessories | iTop Catford', 'Explore cases, screen protectors, cables, chargers, power banks and audio accessories. Ask iTop in Catford about fit, current stock and retail prices.'],
@@ -12,7 +13,7 @@ const descriptions = {
   contact: ['Visit & Contact | iTop Catford', 'Find iTop at 160 Rushey Green, London SE6 4HQ. Check shop opening hours, get directions, call or contact the team through WhatsApp.'],
   support: ['Warranty & Aftercare | iTop Catford', 'Questions about a repair or purchase? Review aftercare guidance and ask iTop about the terms agreed for your individual device or accessory.'],
 };
-export const mainPageRoutes = ['', 'repairs/', 'accessories/', 'wholesale/', 'buy-sell/', 'contact/', 'support/', 'business/', 'wholesale/apply/', 'privacy/'];
+export const mainPageRoutes = ['', 'repairs/', 'accessories/', 'wholesale/', 'buy-sell/', 'contact/', 'support/', 'business/', 'wholesale/apply/', 'privacy/', 'track-repair/'];
 export const publishedRoutes = [...mainPageRoutes, ...repairPageRoutes];
 
 export function sitePageMeta(route) {
