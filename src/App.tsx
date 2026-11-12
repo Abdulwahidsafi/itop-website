@@ -11,12 +11,14 @@ import { RepairsPage } from './RepairsPage';
 import { ContactPage, SupportPage } from './CustomerPages';
 import { HomePage } from './HomePage';
 import { siteHref, siteRoute } from './sitePaths';
+import { useScrollReveal } from './scrollReveal';
 import { EnquiryDialog, type EnquiryKind, type Enquiry } from './EnquiryDialog';
 import { AccessoriesPage, WholesalePage, BuySellPage } from './ServicePages';
 export function App() {
   const route = siteRoute(window.location.pathname);
   const isRepairsPage = route === 'repairs' || route.startsWith('repairs/');
   const meta = sitePageMeta(route);
+  useScrollReveal(route);
   useEffect(() => {
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);

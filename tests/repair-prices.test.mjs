@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { repairPriceRows, repairPriceOptions, repairMoney, repairDeposit, appointmentSettings } from '../src/repairPrices.mjs';
+import { repairPriceRows, repairPriceOptions, repairMoney, repairDeposit, appointmentSettings, lowestRepairPrice } from '../src/repairPrices.mjs';
 import { repairBrands } from '../src/repairCatalogue.mjs';
 
 test('owner price list maps to exact existing models and integer amounts',()=>{
@@ -43,4 +43,12 @@ test('unknown models, iPhone 18 and unpriced repairs never get a fallback price'
   assert.deepEqual(repairPriceOptions('iPhone 15','Charging fault'),[]);
   assert.deepEqual(repairPriceOptions('iPhone 1','Screen replacement'),[]);
   assert.equal(repairMoney(9900),'£99');assert.throws(()=>repairMoney(0));assert.throws(()=>repairMoney(99.5));
+});
+
+test('the "from" price is the cheapest part option for that repair',()=>{
+  assert.equal(lowestRepairPrice(repairPriceOptions('iPhone 13','Screen replacement')),6000);
+  assert.equal(lowestRepairPrice(repairPriceOptions('iPhone 13','Battery replacement')),5500);
+  assert.equal(lowestRepairPrice(repairPriceOptions('iPhone 12','Screen replacement')),5000);
+  assert.equal(lowestRepairPrice(repairPriceOptions('iPhone XR','Screen replacement')),4500);
+  assert.throws(()=>lowestRepairPrice([]),/No repair price options/);
 });

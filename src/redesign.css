@@ -59,3 +59,20 @@
 @media(max-width:600px){.model-page-hero.has-model-photo{grid-template-columns:1fr;gap:24px}.model-page-hero.has-model-photo h1{font-size:46px}.model-hero-photo{max-width:340px}.model-hero-photo .model-photo{height:250px}.finder-model-preview{gap:14px;padding:14px}.finder-model-preview>.model-photo{width:110px;height:135px}.finder-model-preview h3{font-size:21px}.phone-model-grid .phone-model{padding:12px;gap:10px}.phone-model-grid .phone-model .model-photo{height:130px}}
 
 .repair-price-scope{font-size:13px;line-height:1.5;padding:12px;background:#edf5f7;border-left:3px solid #19aac9;color:#263b44}.finder-price-results{margin-top:32px;scroll-margin-top:110px}.finder-price-results>h3{font-size:30px;letter-spacing:-1px}.finder-price-results .repair-service-grid{margin-top:20px}
+
+/* From-price with part qualities (owner request, 12 November 2026) */
+.repair-from-price{gap:8px!important;margin-bottom:10px!important}.repair-from-price .repair-from-word{font-size:14px;font-weight:600;letter-spacing:0;color:#526b78}
+.repair-quality-list{border:0;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:8px;min-width:0;width:100%}.repair-quality-list legend{font-size:13px;font-weight:600;color:#103b4b;padding:0;margin-bottom:8px}
+.repair-price-options label.repair-quality{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;gap:10px;min-height:48px;margin:0;padding:10px 12px;border:1px solid #cfdbe2;border-radius:8px;background:#fff;font-size:14px;cursor:pointer;transition:transform .18s cubic-bezier(.2,.7,.2,1),border-color .18s,background .18s}
+.repair-price-options label.repair-quality:hover{transform:translate3d(0,-2px,0);border-color:#103b4b}.repair-price-options label.repair-quality[data-selected]{border-color:#103b4b;background:#f1f8fb;box-shadow:inset 0 0 0 1px #103b4b}
+.repair-quality input{width:20px;height:20px;margin:0;flex:none;accent-color:#103b4b}.repair-quality-name{flex:1;min-width:0;color:#103b4b;font-weight:600}.repair-quality-price{font-weight:750;color:#103b4b;white-space:nowrap}
+.repair-quality:has(input:focus-visible){outline:3px solid #103b4b;outline-offset:2px}
+.repair-selected-total{font-size:13px!important;color:#526b78!important;margin:0 0 6px!important}.repair-selected-total strong{color:#103b4b}
+
+/* Motion: movement and fade only, so phones can draw it smoothly. Switched off by the reduced-motion rules. */
+.reveal{opacity:0;transform:translate3d(0,26px,0);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+.reveal.reveal-in{opacity:1;transform:none}
+.button{transition:transform .16s cubic-bezier(.2,.7,.2,1),background .18s,color .18s,border-color .18s}.button:hover{transform:translate3d(0,-2px,0)}.button:active{transform:scale(.97)}
+.repair-service,.phone-model,.phone-brand{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover){.phone-model:hover,.phone-brand:hover{transform:translate3d(0,-4px,0)}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.button:hover,.button:active,.phone-model:hover,.phone-brand:hover,.repair-price-options label.repair-quality:hover{transform:none}}

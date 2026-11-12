@@ -56,6 +56,12 @@ export function repairPriceOptions(model,issue) {
   return [];
 }
 
+/** Lowest price among the part options for one repair, for the "From £X" line. */
+export function lowestRepairPrice(options) {
+  if(!Array.isArray(options)||!options.length) throw new Error('No repair price options');
+  return Math.min(...options.map(option=>option.pricePence));
+}
+
 /** @param {string} model */
 export function hasRepairPrices(model) { return backGlassPrices.some(row=>row.model===model)||repairPriceRows.some(row=>row.model===model)||benchmarkRepairPrices.some(row=>row.model===model); }
 
