@@ -83,3 +83,10 @@ On 12 November 2026 the owner asked for always-visible contact and for business 
 - It asks ShopOS (the shop system) at `https://shop.itopgroup.co.uk/api/public/repair-status` with the job number and the last 4 digits of the customer's phone. ShopOS only allows this from `https://itopgroup.co.uk` and `https://www.itopgroup.co.uk`, limits guesses, and answers with device, status, expected time and amount to pay only. Never show a customer name or full phone number on this page.
 - `?job=R000123` in the address pre-fills the job number (for a future QR code on the ticket). Never put the phone digits in the address.
 - The page does not work until ShopOS with `api/repair-track.js` is deployed to the cloud, and it cannot be tried from a preview address (ShopOS refuses other origins).
+
+## iTop Rewards page (12 Nov 2026)
+- New page `rewards/` (`src/RewardsPage.tsx`, logic in `src/rewards.mjs`), in the main navigation as "Rewards" and in the footer.
+- Points live in ShopOS. The page asks `https://shop.itopgroup.co.uk/api/public/rewards`: `{action:'info'}` for the scheme rules (shown under "How iTop Rewards works", always from ShopOS so the website never shows out-of-date rates), and `{phone, pin}` or `{code, pin}` for one member.
+- Sign-in is the member's mobile number plus the 6-digit PIN printed on their receipt, or the receipt QR code, which opens `rewards/#CODE-PIN`. The page reads the part after `#` and removes it from the address bar at once. Never move the PIN into the query string.
+- The sign-in is kept in sessionStorage (this tab only) until Sign out. No sign-up from the website: joining happens at the till.
+- Never show a phone number, email or purchases on this page; ShopOS does not send them.

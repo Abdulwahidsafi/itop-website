@@ -122,3 +122,28 @@ footer{border-top:1px solid var(--line)}
 .track-note,.track-privacy{margin:0;font-size:14px;color:#aab1d0}.track-privacy{color:#5b6478}
 .track-result.is-closed h2{color:#fff}
 @media (max-width:520px){.track-form,.track-result{padding:18px}.track-steps li{font-size:11px}}
+
+/* iTop Rewards */
+.rewards-section{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.rewards-form h2{margin:0;color:var(--ink)}.rewards-hint{margin:0;font-size:14px;color:#5b6478}
+.rewards-card{padding:28px;border-radius:22px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:20px}
+.rewards-card header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.rewards-hello{margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#aab1d0}
+.rewards-points{margin:6px 0 0;font-size:clamp(44px,11vw,72px);line-height:1;font-weight:800;color:var(--yellow)}.rewards-points small{font-size:18px;font-weight:600;color:#fff}
+.rewards-worth{margin:6px 0 0;color:#d8dcf0}
+.rewards-tier{padding:8px 16px;border-radius:999px;font-weight:800;background:#c98b4b;color:#1c1206;white-space:nowrap}.rewards-tier.tier-silver{background:#d9dde6;color:#1b2233}.rewards-tier.tier-gold{background:var(--yellow);color:var(--ink)}
+.rewards-bar{display:flex;flex-direction:column;gap:8px}.rewards-bar div{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.rewards-bar span{color:#aab1d0;font-size:14px}
+.rewards-bar i{display:block;height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}.rewards-bar u{display:block;height:100%;border-radius:999px;background:var(--yellow);text-decoration:none;transition:width .8s ease}
+.rewards-top{margin:0;display:flex;align-items:center;gap:8px;color:var(--yellow);font-weight:700}
+.rewards-stamps{display:flex;flex-direction:column;gap:10px}.rewards-stamps ol{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+.rewards-stamps li{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:2px dashed #4a5590;color:#aab1d0;font-weight:700}.rewards-stamps li.on{border:2px solid var(--yellow);background:var(--yellow);color:var(--ink)}
+.rewards-stamps span,.rewards-friend span{color:#aab1d0;font-size:14px}
+.rewards-friend{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.08)}.rewards-friend div{display:flex;flex-direction:column;gap:4px}.rewards-friend strong{color:var(--yellow);letter-spacing:.12em}
+.rewards-card .button-outline{background:transparent;border-color:#fff;color:#fff}.rewards-card .button-outline:hover{background:rgba(255,255,255,.12)}
+.rewards-history ul{list-style:none;margin:10px 0 0;padding:0}.rewards-history li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.12);font-size:15px}
+.rewards-history li span:first-child{color:#aab1d0;white-space:nowrap}.rewards-history strong{color:var(--yellow)}.rewards-history strong.minus{color:#ffb3b3}
+.rewards-card footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:#aab1d0;font-size:14px;padding:0;border:0;background:none}.rewards-card footer .text-button{color:#fff}
+.rewards-how h2{color:var(--ink);margin:0 0 14px}.rewards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.rewards-grid>div{padding:20px;border-radius:18px;background:#fff;border:1px solid #e3e7f2;box-shadow:0 10px 30px rgba(11,20,69,.06)}.rewards-grid h3{margin:0 0 10px;color:var(--ink)}
+.rewards-grid ul{list-style:none;margin:0 0 10px;padding:0}.rewards-grid li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #eef0f7}.rewards-grid li b{color:#1b2a7a;white-space:nowrap}.rewards-grid p{margin:6px 0 0;color:#3b4460}
+@media (max-width:520px){.rewards-card{padding:20px}.rewards-history li{grid-template-columns:1fr auto}.rewards-history li span:first-child{grid-column:1/-1}}
