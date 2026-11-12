@@ -28,7 +28,7 @@ export function TrackRepairPage() {
     <section className="content-section track-section">
       <form className="track-form" onSubmit={submit} noValidate>
         <label>Job number<small>On your ticket, starts with R</small><input name="job" value={job} onChange={e => setJob(e.target.value)} placeholder="R000123" autoCapitalize="characters" autoComplete="off" maxLength={12} inputMode="text" /></label>
-        <label>Last 4 digits of your phone number<small>The number you gave us when you booked</small><input name="phone" value={phone} onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 4))} placeholder="1234" inputMode="numeric" autoComplete="off" maxLength={4} /></label>
+        <label>Last 4 digits of your phone number<small>The number you gave us when you booked</small><input name="phone" value={phone} onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 4))} placeholder="1234" inputMode="numeric" autoComplete="off" maxLength={4} autoFocus={job !== ''} /></label>
         <button className="button button-dark" type="submit" disabled={busy}>{busy ? 'Checking…' : 'Check my repair'}</button>
         {error && <p className="track-error" role="alert">{error}</p>}
       </form>
